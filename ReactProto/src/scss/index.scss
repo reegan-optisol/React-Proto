@@ -1,0 +1,51 @@
+
+
+@import '~grommet-index/scss/grommet-index/index';
+
+// put some sparkle in the logo for the status page when busy
+.logo-icon {
+  &--busy {
+    animation: crawl 4s 0.1s infinite linear alternate;
+  }
+}
+
+@keyframes crawl {
+  0% { stroke-dasharray: 95px 1px; }
+  20% { stroke-dasharray: 90px 6px; stroke-dashoffset: 96px; }
+  80% { stroke-dasharray: 90px 6px; stroke-dashoffset: 0; }
+  100% { stroke-dasharray: 95px 1px; }
+}
+
+.title {
+
+  .logo-icon {
+    transition: all 0.2s;
+  }
+
+  &:hover {
+    .logo-icon {
+      transform: translateX(2px);
+    }
+  }
+}
+
+.message {
+  max-width: $readable-text-width;
+}
+
+// TODO: Move to grommet core
+.sidebar {
+  @include media-query(lap-and-up) {
+    @include animation('slide-sidebar 0.2s');
+  }
+}
+
+@include keyframes(slide-sidebar) {
+  0% {
+    width: 0;
+  }
+
+  100% {
+    width: $sidebar-width;
+  }
+}
